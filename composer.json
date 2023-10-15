@@ -27,17 +27,11 @@
     "funding": [
     ],
     "require": {
-        "php": ">=7.3",
-        "ext-json": "*",
-        "flarum/core": "^1"
-    },
-    "require-dev": {
+        "flarum/core": "^1.2.0"
     },
     "autoload": {
         "psr-4": {
-            "Africoders\\SSO\\": "src/",
-            "Africoders\\SSO\\Listener\\": "src/Listener",
-            "Africoders\\SSO\\Middleware\\": "src/Middleware"
+            "Africoders\\Sso\\": "src/"
         }
     },
     "extra": {
@@ -49,8 +43,6 @@
                 "color": "#E66A2D",
                 "backgroundColor": "#FFE38F"
             }
-        },
-        "flarum-cli": {
         }
     }
 }

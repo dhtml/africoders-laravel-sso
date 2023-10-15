@@ -1,4 +1,5 @@
 <?php
+namespace Africoders\Sso;
 
 use Flarum\Extend;
 
