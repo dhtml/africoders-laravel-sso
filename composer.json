@@ -1,6 +1,6 @@
 {
     "name": "africoders/flarum-laravel-sso",
-    "description": "SSO for Flarum & Laravel",
+    "description": "Laravel Flarum SSO",
     "type": "flarum-extension",
     "homepage": "https://africoders.com",
     "keywords": [
@@ -36,7 +36,7 @@
     },
     "extra": {
         "flarum-extension": {
-            "title": "Laravel SSO (Single Sign On)",
+            "title": "Laravel Flarum SSO (Single Sign On)",
             "category": "feature",
             "icon": {
                 "name": "fas fa-sign-in-alt",
