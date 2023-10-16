@@ -27,7 +27,8 @@
     "funding": [
     ],
     "require": {
-        "flarum/core": "^1.2.0"
+        "flarum/core": "^1.2.0",
+         "illuminate/encryption": "8.*" 
     },
     "autoload": {
         "psr-4": {
