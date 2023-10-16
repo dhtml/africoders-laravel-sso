@@ -1,25 +1,18 @@
 <?php 
 namespace Africoders\SSO\Middleware;
 
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Server\RequestHandlerInterface as Handler;
-use Flarum\Http\Middleware\MiddlewareInterface;
-use Illuminate\Contracts\Session\Session;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 class SessionMiddleware implements MiddlewareInterface
 {
-    protected $session;
-
-    public function __construct(Session $session)
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $this->session = $session;
-    }
-
-    public function process(Request $request, Handler $handler)
-    {
-        // Your middleware logic here
-        // This code will be executed every time a page loads
-
-        return $handler->handle($request);
+        // Logic to run before the request is processed and later middleware is called.
+        $response = $handler->handle($request);
+        // Logic to run after the request is processed.
+        return $response;
     }
 }
