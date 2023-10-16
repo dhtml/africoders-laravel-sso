@@ -28,7 +28,8 @@
     ],
     "require": {
         "flarum/core": "^1.2.0",
-         "illuminate/encryption": "8.*" 
+         "illuminate/encryption": "8.*",
+         "larapack/dd": "1.*"
     },
     "autoload": {
         "psr-4": {

@@ -6,7 +6,7 @@ use Flarum\Database\AbstractModel;
 use Flarum\Group\Group;
 use Illuminate\Database\Eloquent\Relations;
 
-class SessionModel extends AbstractModel
+class PivotUserModel extends AbstractModel
 {
-    protected $table = 'sessions';
+    protected $table = 'users_pivot';
 }

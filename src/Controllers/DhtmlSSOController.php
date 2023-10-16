@@ -10,7 +10,8 @@ use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Support\Arr;
 use Psr\Http\Message\ServerRequestInterface;
 use Tobscure\JsonApi\Document;
-use Illuminate\Encryption\Encrypter;
+
+use Africoders\SSO\Services\SessionService;
 
 class DHTMLSSOController extends AbstractShowController
 {
@@ -35,17 +36,18 @@ class DHTMLSSOController extends AbstractShowController
      */
     protected function data(ServerRequestInterface $request, Document $document)
     {
-        $cookies = $request->getCookieParams();
-        $sessionCookie = $cookies["africoders_account_session"];
+        $sessionService = new SessionService();
+        $user = $sessionService->getUserFromRequest($request);
 
-        $config = require __DIR__ . '/../../../../../config.php'; // Adjust the path as needed
+        /*
         $sso = $config["sso"] ?? [];
         $encryptionKey = $sso['encryptionKey'];
-        exit($encryptionKey);
 
         $encrypter = new Encrypter(base64_decode($encryptionKey), 'AES-256-CBC');
+        $sessionDecrypt = $encrypter->decrypt($sessionCookie,false);
 
-        var_dump($sessionCookie);
+        var_dump($sessionDecrypt);
+        */
         exit();
 
         //var_dump($this->events);
