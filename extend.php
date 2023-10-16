@@ -15,6 +15,7 @@ return [
     // Locales
     new Extend\Locales(__DIR__ . '/locale'),
 
+    //add session middleware
     (new Extend\Middleware('forum'))
         ->add(SessionMiddleware::class),
 
