@@ -77,6 +77,7 @@ app.initializers.add('africoders-laravel-sso', () => {
     // Remove change email and password buttons
     items.remove('changeEmail');
     items.remove('changePassword');
+    items.remove('changeNickname');    
 
     items.add(
       'manageAccount',
