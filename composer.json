@@ -33,7 +33,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Africoders\\SSO\\": "src/"
+            "Africoders\\SSO\\": "src/",
+            "Africoders\\SSO\\Controllers\\": "src/Controllers",
+            "Africoders\\SSO\\Listener\\": "src/Listener",
+            "Africoders\\SSO\\Middleware\\": "src/Middleware",
+            "Africoders\\SSO\\Models\\": "src/Models",
+            "Africoders\\SSO\\Services\\": "src/Services"
         }
     },
     "extra": {
