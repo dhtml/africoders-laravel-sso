@@ -31,7 +31,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Africoders\\Sso\\": "src/"
+            "Africoders\\SSO\\": "src/"
         }
     },
     "extra": {

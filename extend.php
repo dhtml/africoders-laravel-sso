@@ -1,9 +1,11 @@
 <?php
-namespace Africoders\Sso;
+namespace Africoders\SSO;
 
 use Flarum\Extend;
 use Illuminate\Session\Store as Session;
 use Illuminate\Contracts\Events\Dispatcher;
+
+use Africoders\SSO\Middleware\SessionMiddleware;
 
 return [
     // Frontend extenders (JS)
@@ -12,9 +14,7 @@ return [
     // Locales
     new Extend\Locales(__DIR__ . '/locale'),
     
-    //dispatcher
-    function (Dispatcher $events, Session $session) {
-        // Your code here to access the session data
-        var_dump("Dispatcher");
-    },
+    (new Flarum\Extend\Middleware('forum'))
+    ->add(SessionMiddleware::class),
+
 ];
