@@ -73,12 +73,12 @@ app.initializers.add('africoders-laravel-sso', () => {
     if (location.href.indexOf(".test") !== -1) {
        baseUrl = "https://account.africoders.test";
     }
-
     let changeDisplayName = baseUrl + '/account#information';
+    let changePassword = baseUrl + '/account#password';
 
     // Remove change email and password buttons
     items.remove('changeEmail');
-    items.remove('changePassword');
+    //items.remove('changePassword');
     //items.remove('changeNickname');
 
     items.add(
@@ -93,6 +93,13 @@ app.initializers.add('africoders-laravel-sso', () => {
       <a class="Button" href={changeDisplayName} target={''}>
         {app.translator.trans('africoders-laravel-sso.forum.change_nickname_btn')}
       </a>
+    );
+
+    items.add(
+        'changePassword',
+        <a class="Button" href={changePassword} target={''}>
+          {app.translator.trans('africoders-laravel-sso.forum.change_password_btn')}
+        </a>
     );
 
     //console.log(items);
