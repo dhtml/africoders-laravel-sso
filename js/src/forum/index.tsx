@@ -81,12 +81,6 @@ app.initializers.add('africoders-laravel-sso', () => {
     //items.remove('changePassword');
     //items.remove('changeNickname');
 
-    items.add(
-      'manageAccount',
-      <a class="Button" href={baseUrl} target={''}>
-        {app.translator.trans('africoders-laravel-sso.forum.manage_account_btn')}
-      </a>
-    );
 
     items.add(
       'changeNickname',
@@ -100,6 +94,13 @@ app.initializers.add('africoders-laravel-sso', () => {
         'changePassword',
         <a class="Button" href={changePassword} target={''}>
           {app.translator.trans('africoders-laravel-sso.forum.change_password_btn')}
+        </a>
+    );
+
+    items.add(
+        'manageAccount',
+        <a class="Button" href={baseUrl} target={''}>
+          {app.translator.trans('africoders-laravel-sso.forum.manage_account_btn')}
         </a>
     );
 
