@@ -8,8 +8,6 @@ use Africoders\SSO\Listener\AddLogoutRedirect;
 use Africoders\SSO\Listener\LoadSettingsFromDatabase;
 use Africoders\SSO\Listener\ProviderModeListener;
 use Africoders\SSO\Listener\UserUpdated;
-use Africoders\SSO\Middleware\LoginMiddleware;
-use Africoders\SSO\Middleware\LogoutMiddleware;
 use Africoders\SSO\Middleware\SessionMiddleware;
 
 use Africoders\SSO\Controllers\DHTMLSSOController;
