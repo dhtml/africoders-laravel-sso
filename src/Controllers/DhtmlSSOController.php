@@ -31,10 +31,10 @@ class DHTMLSSOController implements RequestHandlerInterface
 
         if($userState['action']==="login") {
             //forum login
-           $result =  $sessionService->authenticateByEmail($userState['userEmail'], $request->getAttribute('session'));
+           //$result =  $sessionService->authenticateByEmail($userState['userEmail'], $request->getAttribute('session'));
         } else if($userState['action']==="logout") {
             //forum logout
-            $sessionService->logoutUser($request->getAttribute('session'));
+            //$sessionService->logoutUser($request->getAttribute('session'));
         }
 
         return new JsonResponse($userState);
