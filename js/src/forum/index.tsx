@@ -34,14 +34,14 @@ function getItems(): Record<string, { url: string; itemName: string; removeItem:
 
 app.initializers.add('africoders-laravel-sso', () => {
   override(LogInModal.prototype, 'oncreate', () => {
-      console.log("Login modal shown");
+      //console.log("Login modal shown");
       const items = getItems();
       window.location.href = items.login.url;
       throw new Error('Stop execution');
   });
 
   extend(HeaderSecondary.prototype, 'items', (buttons) => {
-        console.log("Secondary button shown");
+        //console.log("Secondary button shown");
 
         
       const items = getItems();
@@ -68,7 +68,7 @@ app.initializers.add('africoders-laravel-sso', () => {
 
   
   extend(SettingsPage.prototype, 'accountItems', (items) => {
-    console.log(items);
+    //console.log(items);
     let baseUrl = "https://account.africoders.com";
     if (location.href.indexOf(".test") !== -1) {
        baseUrl = "https://account.africoders.test";
@@ -92,7 +92,7 @@ app.initializers.add('africoders-laravel-sso', () => {
       </a>
     );
 
-    console.log(items);
+    //console.log(items);
   });
 
 

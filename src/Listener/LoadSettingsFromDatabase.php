@@ -1,11 +1,13 @@
 <?php
+
 namespace Africoders\SSO\Listener;
 
 use Flarum\Settings\SettingsRepositoryInterface;
-use Africoders\SSO\Services\ConfigService;
+use Illuminate\Contracts\Events\Dispatcher;
 
-class AddLogoutRedirect
+class LoadSettingsFromDatabase
 {
+    /** @var SettingsRepositoryInterface */
     private $settings;
 
     public function __construct(SettingsRepositoryInterface $settings)
@@ -13,10 +15,8 @@ class AddLogoutRedirect
         $this->settings = $settings;
     }
 
-    final public function addLogoutRedirect(): void
+    final public function subscribe(Dispatcher $events): void
     {
-        $logoutUrl = ConfigService::getLogoutUrl();
-        header("Location: $logoutUrl");
-        return;
+
     }
 }

@@ -1,56 +1,42 @@
 <?php
+
 namespace Africoders\SSO\Controllers;
 
-use Flarum\Api\Controller\AbstractShowController;
-use Flarum\Http\RequestUtil;
-use Flarum\Tags\Api\Serializer\TagSerializer;
-use Flarum\Tags\Tag;
-use Flarum\User\User;
-use Illuminate\Contracts\Events\Dispatcher;
-use Illuminate\Support\Arr;
-use Psr\Http\Message\ServerRequestInterface;
-use Tobscure\JsonApi\Document;
-
 use Africoders\SSO\Services\SessionService;
+use Africoders\SSO\Services\ConfigService;
+use Flarum\User\UserRepository;
+use Laminas\Diactoros\Response\JsonResponse;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Server\RequestHandlerInterface;
 
-class DHTMLSSOController extends AbstractShowController
+class DHTMLSSOController implements RequestHandlerInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public $serializer = TagSerializer::class;
 
-    /**
-     * @var Dispatcher
-     */
-    protected $events;
-    protected $session;
+    protected $users;
 
-    public function __construct(Dispatcher $events)
+    public function __construct(UserRepository $users)
     {
-        $this->events = $events;
+        $this->users = $users;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function data(ServerRequestInterface $request, Document $document)
+    final public function handle(Request $request): ResponseInterface
     {
-        $sessionService = new SessionService();
-        $user = $sessionService->getUserFromRequest($request);
+        $sessionService = new SessionService($this->users);
 
-        /*
-        $sso = $config["sso"] ?? [];
-        $encryptionKey = $sso['encryptionKey'];
+        $query = $request->getQueryParams();
+        $action = $query['action'] ?? null;
 
-        $encrypter = new Encrypter(base64_decode($encryptionKey), 'AES-256-CBC');
-        $sessionDecrypt = $encrypter->decrypt($sessionCookie,false);
+        $userState = $sessionService->getUserState($request);
 
-        var_dump($sessionDecrypt);
-        */
-        exit();
+        if($userState['action']==="login") {
+            //forum login
+           $result =  $sessionService->authenticateByEmail($userState['userEmail'], $request->getAttribute('session'));
+        } else if($userState['action']==="logout") {
+            //forum logout
+            $sessionService->logoutUser($request->getAttribute('session'));
+        }
 
-        //var_dump($this->events);
-        return "DHTML SSO";
+        return new JsonResponse($userState);
     }
 }

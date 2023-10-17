@@ -35,7 +35,8 @@ class LogoutMiddleware implements MiddlewareInterface
         $path = $request->getUri()->getPath();
         $cookies = $request->getCookieParams();
 
-        $prefix = 'flarum';
+        $prefix = $this->settings->get('africoders-laravel-sso.cookies_prefix', 'flarum');
+
 
         if (Arr::exists($cookies, "{$prefix}_logout") and !$actor->isGuest() and $path !== $logout_url) {
             return new RedirectResponse($this->config->url()->__toString() . "$logout_url?token=$token&redirect=false&path=$path");
