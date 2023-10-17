@@ -74,9 +74,12 @@ app.initializers.add('africoders-laravel-sso', () => {
        baseUrl = "https://account.africoders.test";
     }
 
+    let changeDisplayName = baseUrl + '/account#information';
+
     // Remove change email and password buttons
     items.remove('changeEmail');
     items.remove('changePassword');
+    //items.remove('changeNickname');
 
     items.add(
       'manageAccount',
@@ -87,8 +90,8 @@ app.initializers.add('africoders-laravel-sso', () => {
 
     items.add(
       'changeNickname',
-      <a class="Button" href={baseUrl} target={''}>
-        {app.translator.trans('africoders-laravel-sso.forum.manage_account_btn')}
+      <a class="Button" href={changeDisplayName} target={''}>
+        {app.translator.trans('africoders-laravel-sso.forum.change_nickname_btn')}
       </a>
     );
 
