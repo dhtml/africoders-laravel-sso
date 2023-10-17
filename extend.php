@@ -21,18 +21,10 @@ return [
     // Locales
     new Extend\Locales(__DIR__ . '/locale'),
 
-    // Events
-    (new Extend\Event())
-        ->listen(Registered::class, [ActivateUser::class, 'activateUser'])
-        ->listen(LoggedOut::class, [AddLogoutRedirect::class, 'addLogoutRedirect'])
-        ->listen(Saving::class, [UserUpdated::class, 'updateAvatarUrl'])
-        ->subscribe(LoadSettingsFromDatabase::class),
 
     //add session middleware
     (new Extend\Middleware('forum'))
-        ->add(SessionMiddleware::class)
-        ->add(LoginMiddleware::class)
-        ->add(LogoutMiddleware::class),
+        ->add(SessionMiddleware::class),
 
     // Routes
     (new Extend\Routes('forum'))->get('/africoders-sso', 'africoders-laravel-sso.sso-auth', DHTMLSSOController::class),
