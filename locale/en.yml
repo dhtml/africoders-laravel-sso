@@ -34,3 +34,4 @@ africoders-laravel-sso:
   forum:
       manage_account_btn: "Manage account"
       change_nickname_btn: "Change Display Name"
+      change_password_btn: "Update Password"
