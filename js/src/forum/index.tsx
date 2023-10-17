@@ -95,6 +95,7 @@ app.initializers.add('africoders-laravel-sso', () => {
       </a>
     );
 
+
     items.add(
         'changePassword',
         <a class="Button" href={changePassword} target={''}>

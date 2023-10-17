@@ -1,7 +1,7 @@
 africoders-laravel-sso:
   admin:
     settings:
-      title: "Africoders Laravel SSO Settings"
+      title: "Africoders Laravel Flarum SSO Settings"
 
       provider_mode: "Enable this option to use the provider mode (SSO between Flarum instances).
             Allows other Flarum instances to login an user of this Flarum instance.
