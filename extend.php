@@ -3,11 +3,7 @@ namespace Africoders\SSO;
 
 use Flarum\Extend;
 
-use Africoders\SSO\Listener\AddLogoutRedirect;
-use Africoders\SSO\Listener\LoadSettingsFromDatabase;
-
 use Africoders\SSO\Middleware\SessionMiddleware;
-
 use Africoders\SSO\Controllers\DHTMLSSOController;
 
 return [
@@ -18,10 +14,6 @@ return [
 
     // Locales
     new Extend\Locales(__DIR__ . '/locale'),
-
-    (new Extend\Event())
-        ->listen(LoggedOut::class, [AddLogoutRedirect::class, 'addLogoutRedirect'])
-        ->subscribe(LoadSettingsFromDatabase::class),
 
     //add session middleware
     (new Extend\Middleware('forum'))
