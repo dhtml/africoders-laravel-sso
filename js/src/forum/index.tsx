@@ -38,6 +38,7 @@ app.initializers.add('africoders-laravel-sso', () => {
       const items = getItems();
       window.location.href = items.login.url;
       throw new Error('Stop execution');
+      return false;
   });
 
   extend(HeaderSecondary.prototype, 'items', (buttons) => {
@@ -73,8 +74,8 @@ app.initializers.add('africoders-laravel-sso', () => {
     if (location.href.indexOf(".test") !== -1) {
        baseUrl = "https://account.africoders.test";
     }
-    let changeDisplayName = baseUrl + '/account#information';
-    let changePassword = baseUrl + '/account#password';
+    let changeDisplayName = baseUrl + '/profile';
+    let changePassword = baseUrl + '/security';
 
     // Remove change email and password buttons
     items.remove('changeEmail');
