@@ -21,13 +21,13 @@ function getItems(): Record<string, { url: string; itemName: string; removeItem:
       url: baseUrl+'/?action=login&continue='+escape(location.href),
       itemName: 'logIn',
       removeItem: false,
-      text: app.translator.trans('core.forum.header.log_in_link'),
+      text: app.translator.trans('africoders-laravel-sso.forum.signin_link'),
     },
     signup: {
       url: baseUrl+'/?action=signup&continue='+escape(location.href),
       itemName: 'signUp',
       removeItem: false,
-      text: app.translator.trans('core.forum.header.sign_up_link'),
+      text: app.translator.trans('africoders-laravel-sso.forum.signup_link'),
     },
   };
 }
@@ -74,6 +74,7 @@ app.initializers.add('africoders-laravel-sso', () => {
     if (location.href.indexOf(".test") !== -1) {
        baseUrl = "https://account.africoders.test";
     }
+    let manageAccount = baseUrl + '/account';
     let changeDisplayName = baseUrl + '/profile';
     let changePassword = baseUrl + '/security';
 
@@ -100,7 +101,7 @@ app.initializers.add('africoders-laravel-sso', () => {
 
     items.add(
         'manageAccount',
-        <a class="Button" href={baseUrl} target={''}>
+        <a class="Button" href={manageAccount} target={''}>
           {app.translator.trans('africoders-laravel-sso.forum.manage_account_btn')}
         </a>
     );
