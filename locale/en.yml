@@ -33,7 +33,7 @@ africoders-laravel-sso:
       jwt_signing_algorithm: Signing Method
   forum:
       manage_account_btn: "Manage account"
-      change_nickname_btn: "My Profile"
-      change_password_btn: "Security"
+      change_nickname_btn: "Profile Settings"
+      change_password_btn: "Security Settings"
       signin_link: "Sign In"
       signup_link: "Sign Up"
