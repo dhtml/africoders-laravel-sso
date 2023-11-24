@@ -35,7 +35,11 @@ class SessionService
     {
         $cookies = $request->getCookieParams();
         $sessionCookieName = ConfigService::getConfig("cookieName");
-        $sessionCookie = $cookies[$sessionCookieName];
+        $sessionCookie = $cookies[$sessionCookieName] ?? null;
+
+        if(!$sessionCookie) {
+            return null;
+        }
 
         $session = $request->getAttribute('session');
 

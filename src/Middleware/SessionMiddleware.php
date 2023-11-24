@@ -37,13 +37,13 @@ class SessionMiddleware implements MiddlewareInterface
         $sessionService = new SessionService($this->users);
         $userState = $sessionService->getUserState($request);
 
-        if($userState['action']==="login") {
+        if($userState && $userState['action']==="login") {
             //forum login
             $result =  $sessionService->authenticateByEmail($userState['userEmail'], $request->getAttribute('session'));
             if($result) {
                 return new RedirectResponse("/");
             }
-        } else if($userState['action']==="logout") {
+        } else if($userState && $userState['action']==="logout") {
             //forum logout
             $sessionService->logoutUser($request->getAttribute('session'));
             return new RedirectResponse("/");
